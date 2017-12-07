@@ -1,0 +1,168 @@
+\documentclass{article}
+	\title{Short Conclusion on Combinatorial Proof}
+	\author{Neithen}
+\usepackage{geometry}
+\geometry{left=3cm,right=3cm,top=3cm,bottom=3cm}
+\begin{document}
+	\maketitle
+	
+	\section{Pascal's Recurrence Relation}
+	\subparagraph{Pascal's Formula}
+	$${n \choose k} = {n-1 \choose k-1} + {n-1 \choose k}$$
+	LHS: Choose k out of n objects.\\
+	RHS: If element\#1 is already been chosen, choose remaining k-1 from n-1 objects; If element\#1 is not chosen, choose k from n.
+	
+	\subparagraph{Stirling Number of the Second Kind}
+	$$S(p,k)=kS(p-1,k)+S(p-1,k-1)$$
+	LHS: Arrange p students into k groups.\\
+	RHS: If student\#1 forms a group himself, then arrange p-1 into k-1; If student\#1 joins with others, then arrange p-1 into k, and he can choose k groups to join.
+	
+	\subparagraph{Stirling Number of the First Kind}
+	$$s(p,k)=(p-1)s(p-1,k)+s(p-1,k-1)$$
+	LHS: Arrange p people in k round tables.\\
+	RHS: If the king sit alone, then arrange p-1 into k-1 tables; If the king sit with others, then arrange p-1 into k tables, and the king have p-1 positions to sit.
+	
+	\textit{Pascal's relation is a common recurrence relation. Usually, when solving problems using recurrence, we consider the \textcircled{1} first/final step or \textcircled{2} the previous step}
+	
+	\section{Other Recurrence Relations}
+	\subparagraph{Ramsey Number}
+	$$r(m,n)\leq r(m-1,n)+r(m,n-1)$$
+	This conclusion (Ramsey Theory) can be proved by mathematical induction.\\
+	Induction hypothesis: $r(m,n-1)$ and $r(m-1,n)$ both exists.\\
+	Suppose in $K_{r(m-1,n)+r(m,n-1)}$, one of the vertices $x$ is incident to $|R_x|$ red edges and $|B_x|$ blue edges. Then
+	$$ |R_x|+|B_x|=r(m-1,n)+r(m,n-1)+1$$
+	By the Pigeonhole Principle, either $|R_x|\geq r(m-1,n)$ or $|B_x| \geq r(m,n-1)$.\\
+	If $|R_x|>r(m-1,n)$, consider the $K_{r(m-1,n)}$ formed by the $|R_x|$ vertices. If it provides a red $K_{m-1}$, then by adding $x$, we have a red $K_m$. If it provides a blue $K_n$, then we are done.\\
+	Similar proof can be made when $|B_x| \geq r(m,n-1)$.\\
+	
+	
+	$ \rightarrow $ Complement\\
+	$$r(m,n) \leq {m+n-2 \choose m-1} = {m+n-2 \choose n-1}$$
+	Suppose $f(m,n) = {m+n-2 \choose m-1}$, by Pascal's formula, we have
+	$$f(m,n)=f(m-1,n)+f(m,n-1) $$
+
+	\subparagraph{Derangements}
+	$$ D_n = (n-1)(D_{n-1} + D_{n-2})$$
+	RHS: Since 1 is not in its natural position, there are (n-1) ways to choose the first element. Suppose k is in the first position, if 1 is in k's natural position, then $D_{n-2}$ ways to arrange others; if not, since 1 cannot be in k's natural position, there are $D_{n-1}$ ways to arrange them.
+
+	$$ D_{n+1} = P_1^nD_{n-1}+P_2^nD_{n-2} + \cdots P_{n-1^n}D_1 + P_n^nD_0$$
+	RHS: Count by cyclic permutation groups containing 1.
+
+	\subparagraph{Catalan Number}
+	$$ C_{n+1} = C_{1}C_{n} + C_{2}C_{n-1} + \cdots + C_{n-1}C_{2} + C_{n}C_1$$
+	RHS: In triangulation, choose a base edge. Discuss on which triangle contains this base.
+
+	\subparagraph{Large Schr$\ddot{o}$der Number}
+	$$ R_n = R_{n-1} + \sum_{k=1}^n R_{k-1} R_{n-k} $$
+	LHS: Number of subdiagonal HVD-lattice paths (Schr$\ddot{o}$der path) from (0,0) to (n,n).\\
+	RHS: If the first step is D, then $R_{n-1}$. If the first step is H, suppose it touches the line $y=x$ at (k,k) for the first time.
+
+	\section{Summation}
+	$${n \choose 0} + {n \choose 1} + \cdots +{n \choose n} = 2^n$$
+	LHS: Count subsets containing different number of elements.\\
+	RHS: For each elements, it can either be in the subset or not.
+
+	$${r+k+1 \choose k} = {r \choose 0} + {r+1 \choose 1} + \cdots + {r+k \choose k}$$
+	$${n+k \choose k+1} = {0 \choose k} + {1 \choose k} + \cdots  + {n \choose k}$$
+	LHS: Directly choose.\\
+	RHS: Choose using a decision tree. Each time take the "Chosen" branch (first) or the "Not chosen" branch.\\
+	\textit{The two identities are the recursive form of Pascal's formula.}
+
+	$$H_{k}^{n+1} = \sum_{i=0}^{k} H_{i^n}$$
+	Counting the integer solutions to $x_1 + x_2 + \cdots + x_k \leq n$\\
+	LHS: Plug in $x_{k+1}$.\\
+	RHS: Discuss on the exact value of their sum.
+
+	\section{Concerning Leader}
+	$$k{n \choose k} = n{n-1 \choose k-1}$$
+	LHS: Choose k people out of n, and then choose a leader among them.\\
+	RHS: Choose the leader first then the remaining k-1 people.
+
+	$$n2^{n-1} = 1{m \choose 1} + 2{n \choose 2} + \cdots + n{n \choose n}$$
+	LHS: Choose the leader first, then a group with no constraints.\\
+	RHS: Discuss on how many people are in the group, then choose a leader among them.
+
+	$$n(n-1)2^{n-2} = \sum_{k=1}^{n} k^2{n \choose k}$$
+	Choose two leaders (not necessarily distinct).
+
+	\section{Different Groups}
+	\subparagraph{Vandermonde's identity}
+	$${n_1 + n_2 \choose m} = \sum_{k=0}^{m} {n_1 \choose k} {n_2 \choose m-k}$$
+	LHS: From two groups each containing $n_1$ and $n_2$ people, choose m in total.\\
+	RHS: Discuss on how many of them are chosen from the first group.
+
+	$${2n \choose n} = \sum_{k=0}^{n} {n \choose k}^2$$
+	A special case of Vandermonde's identity when $n_1 = n_2 = n$.
+
+	\section{Special Member}
+	$${n \choose k} - {n-3 \choose k} = {n-1 \choose k-1} + {n-2 \choose k-1} + {n-3 \choose k-1}$$
+	In a set containing three distinct element a, b and c, count the number of k subset containing at least one of them.\\
+	LHS: All subsets subtract those do not contain a, b and c.\\
+	RHS: If a is chosen, then choose k-1 from n-1; If a is not chosen and b is chosen, then choose k-1 from n-2; If a and b are not chosen and c is chosen, then choose k-1 from n-3.\\
+	\textit{This is an incomplete form of ${n+k \choose k+1} = {0 \choose k} + {1 \choose k} + \cdots + {n \choose k}$, when we stop at the third branch.}
+
+	$${n+3 \choose k} = {n \choose k} + 3{n \choose k-1} + 3{n \choose k-2} + {n \choose k-3}$$
+	LHS: From a group of n+3 people containing a, b and c, choose k people.\\
+	RHS: Choose none of a, b and c; one of them; two of them; three of them.\\
+	\textit{This is a special case of Vandermonde's identity when $n_2 = 3$.}
+
+	$$ H_{b-2}^a = H_b^a - H_b^{a-1} - H_{b-1}^{a-1}$$
+	LHS: From a dishes choose b of them, where a particular dish A is chosen at least 2 times.\\
+	RHS: From general cases subtracts those choosing exactly 0 or 1 of A.
+
+	\section{Special Position}
+	$${n+2 \choose 3} = 1 \cdot n + 2 \cdot (n-1) + \cdots + (n-1) \cdot 2 + n \cdot 1 $$
+	LHS: Choose 3 out of n.\\
+	RHS: Discuss on the middle number, choose one less than it and one greater than it respectively.
+
+	\section{One-to-one Correspondence}
+	$$ {n \choose 0} + {n \choose 2} + \cdots = {n \choose 1} + {n \choose 3} + \cdots = 2^{n-1} $$
+	Each odd combination can be one-one corresponded to an even combination by deleting or adding a particular element.\\
+	Or think using probability: when consider whether to choose the n-th element, it has already been decided since the oddness (evenness) has to be preserved.
+
+	\subparagraph{Catalan Number}
+	$$C_n = {2n \choose n} - {2n \choose n-1}$$
+	LHS: Number of rectangular lattice paths from (0,0) to (n,n) which never get above the line $y=x$.\\
+	RHS: Number of paths which touch the line $y=x+1$ at least once $\Leftrightarrow$ Number of paths from (-1,1) to (n,n) 
+
+	\subparagraph{Partition Number}
+	$$ p_n^s = p_n^t $$
+	Use Ferrers diagram, \begin{center} self-conjugate $\Leftrightarrow$ distinct odd \end{center}
+
+	$$ p_n^o = p_n^d $$
+	$\Rightarrow$: Merge the same numbers until distinct \\
+	$\Leftarrow$: Divide by 2 until odd\\
+	\begin{center} odd $\Leftrightarrow$ distinct \end{center}
+
+
+	\section{Inequality}
+	\subparagraph{Sperner's Theorem}\leavevmode
+	
+	The maximal antichian contains exactly ${n \choose \lfloor 1/2 \rfloor}$ elements.
+	Suppose $\mathcal{A}$ is an antichian. Use two different methods to count the number of (A, C), where A is in $\mathcal{A}$, and $\mathcal{C}$ is the maximal chain containing A.\\
+	Lemma 1: Each maximal chian of S has exactly n+1 elements; There are n! maximal chians in total.\\
+	Lemma 2: The intersection of an antichian and a chain can have at most 1 element.\\  
+	Method 1: Choose $\mathcal{C}$ first. There are n! ways to do this. After $\mathcal{C}$ is chosen, there are at most 1 way to choose A.\\
+	Method 2: Fix A first. If $|A| = k$, there are $k!(n-k)!$ ways to choose $\mathcal{C}$. Hence, there are 
+
+	\section{Higher Dimensions}
+	\subparagraph{General Pascal's Formula}
+	$${n \choose m_1 \cdots m_p} = \sum_{k=0}^{p} {n \choose m_1 \cdots m_k -1 \cdots m_p}$$
+	LHS: Partition n objects into p different groups, each containing $m_i$ objects.\\
+	RHS: Discuss on which group the particular object goes into. 
+
+	$$ p^n = \sum_{k_1+\cdots + k_p = n} {n \choose k_1 \cdots k_p}$$
+	LHS: Partition n objects into p different groups, where each element can go to one of the groups. \\
+	RHS: Discuss on how many each group have.\\
+	\textit{Compare with the general Pascal's formula.}
+
+	\subparagraph{General Vandermonde's Identity}
+	$${n_1+\cdots + n_p \choose m} = \sum_{k_1+\cdots + k_p = m} {n_1 \choose k_1} {n_2 \choose k_2} \cdots {n_p \choose k_p}$$
+	LHS: From p different groups each containing $n_k$ people, choose m.\\
+	RHS: Discuss on how many are chosen from each groups.
+
+	$$ k_1 k_2 \cdots k_p {n \choose k_1 \cdots k_p} = n(n-1) \cdots (n-p+1) {n \choose k_1-1 \cdots k_p-1}$$
+	LHS: Partition n into p groups, and from each group choose a leader.\\
+	RHS: Choose the leader first then form the group.
+
+\end{document}
