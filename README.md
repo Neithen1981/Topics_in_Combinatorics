@@ -1,9 +1,7 @@
 # Topics on Combinatorics
 
-赞美罗家豪！
+Two short passages about *Generating Permutations & Combinations* and *Combinatorial Proof*.
 
-坑u数学系最好的老师之一（在我心里没有之一）。
+Nothing really interesting.
 
-对所教内容的理解深刻有趣，他的学生也会受到感染以至于发自内心地喜爱这门课。
-
-（虽然学离散学得头发都要没了 哭唧唧
+Final update: correct typos.

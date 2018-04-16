@@ -30,7 +30,7 @@
 	This conclusion (Ramsey Theory) can be proved by mathematical induction.\\
 	Induction hypothesis: $r(m,n-1)$ and $r(m-1,n)$ both exists.\\
 	Suppose in $K_{r(m-1,n)+r(m,n-1)}$, one of the vertices $x$ is incident to $|R_x|$ red edges and $|B_x|$ blue edges. Then
-	$$ |R_x|+|B_x|=r(m-1,n)+r(m,n-1)+1$$
+	$$ |R_x|+|B_x|=r(m-1,n)+r(m,n-1)-1$$
 	By the Pigeonhole Principle, either $|R_x|\geq r(m-1,n)$ or $|B_x| \geq r(m,n-1)$.\\
 	If $|R_x|>r(m-1,n)$, consider the $K_{r(m-1,n)}$ formed by the $|R_x|$ vertices. If it provides a red $K_{m-1}$, then by adding $x$, we have a red $K_m$. If it provides a blue $K_n$, then we are done.\\
 	Similar proof can be made when $|B_x| \geq r(m,n-1)$.\\
@@ -49,12 +49,12 @@
 	RHS: Count by cyclic permutation groups containing 1.
 
 	\subparagraph{Catalan Number}
-	$$ C_{n+1} = C_{1}C_{n} + C_{2}C_{n-1} + \cdots + C_{n-1}C_{2} + C_{n}C_1$$
+	$$ C_{n} = C_{0}C_{n-1} + C_{1}C_{n-2} + \cdots + C_{n-2}C_{1} + C_{n-1}C_0$$
 	RHS: In triangulation, choose a base edge. Discuss on which triangle contains this base.
 
-	\subparagraph{Large Schr$\ddot{o}$der Number}
+	\subparagraph{Large Schr$\mathbf{\ddot{o}}$der Number}
 	$$ R_n = R_{n-1} + \sum_{k=1}^n R_{k-1} R_{n-k} $$
-	LHS: Number of subdiagonal HVD-lattice paths (Schr$\ddot{o}$der path) from (0,0) to (n,n).\\
+	LHS: Number of subdiagonal HVD-lattice paths (Schr$\mathrm{\ddot{o}}$der path) from (0,0) to (n,n).\\
 	RHS: If the first step is D, then $R_{n-1}$. If the first step is H, suppose it touches the line $y=x$ at (k,k) for the first time.
 
 	\section{Summation}
